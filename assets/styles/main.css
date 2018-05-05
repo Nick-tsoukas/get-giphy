@@ -1,6 +1,11 @@
+* {
+  box-sizing: border-box;
+}
+
 body, html {
   height: 100vh;
   width: 100vw;
+  overflow-x: hidden;
 }
 
 body {
@@ -8,7 +13,6 @@ body {
   margin-right: 1em;
   margin-top: 1em;
   background-image: url("/assets/images/backGrid.jpg");
-  /* /Users/nikolaostsoukas/du/gif/get-giphy/assets/images/backGrid.jpg */
 }
 
 
@@ -68,25 +72,31 @@ body {
 
 #images {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-gap: 5px;
-  max-width: 100vw;
+  max-width: 60vw;
+  justify-content: center;
   margin-right: auto;
   margin-left: auto;
 }
 
 .red {
-  /* background: black; */
+  background: black;
+  display: grid;
+  justify-content: center;
+  height: 300px;
+  align-items: center;
+  border:10px solid #5CDB95;
+}
+
+.green {
+  background: #5CDB95;
   display: grid;
   justify-content: center;
   height: 300px;
   align-items: center
 }
 
-.green {
-  /* background: #5CDB95; */
-  display: grid;
-  justify-content: center;
-  height: 300px;
-  align-items: center
+.mui-textfield>input, .mui-textfield>textarea {
+    border-bottom: 10px solid;
 }

@@ -1,15 +1,17 @@
-var array = ['Armadillo','Okapi','Dragon','Pacu Fish','dog','cat','Fossa','Dragon','Dragon','Fossa','Dragon','Fossa','Fossa','Fossa','Fossa','Fossa','Fossa','Fossa','Fossa','Fossa'];
+var array = ['little ghost nebula','orion nebula','vela pulsar','ganymede','triangulum galaxy','lagoon nebula','eagle nebula','helix nebula','omega nebula','saturn nebula'];
 var btnToAddAnimal = document.getElementById('add_animal_btn');
-// api key Y7eIT0AhbEPOy1v9fu1UgUozsYu2DDBm
+
 
 // var url = "http://api.giphy.com/v1/gifs/search?q=dog&limit=5&api_key=Y7eIT0AhbEPOy1v9fu1UgUozsYu2DDBm";
-// i get an array of five pics  on click
+
+
 
 function callApi(search,index) {
   $.ajax({
     url: `http://api.giphy.com/v1/gifs/search?q=${search}&limit=6&api_key=Y7eIT0AhbEPOy1v9fu1UgUozsYu2DDBm`,
     method : "GET"
   }).then(function(res) {
+
     //gets an array of objects
     // In each item of the array get images.fixed_height_small_still
 
@@ -18,23 +20,40 @@ function callApi(search,index) {
       console.log(val)
       if(index%2 === 0){
       //  prepend img html to id images fixed_height_small_still orig
-        var template = `<div class="red"><img src="${val.images.fixed_height_still.url}" /></div>`;
+        var template = `<div draggable="true" class="red"><img class="gif" src="${val.images.fixed_height_still.url}" data-state="still" data-still="${val.images.fixed_height_still.url}" data-animate="${val.images.fixed_height.url}" /></div>`;
         $("#images").prepend(template);
       } else {
-        var template = `<div class="green"><img class="green" src="${val.images.fixed_height_still.url}" /></div>`;
+        var template = `<div draggable="true" class="green"><img class="gif" src="${val.images.fixed_height_still.url}" data-state="still" data-still="${val.images.fixed_height_still.url}" data-animate="${val.images.fixed_height.url}" /></div>`;
         $("#images").prepend(template);
       }
-    })
+    });
+    //Adding click event to images with the gif class
+    addClickToGifs();
   });
 }
-// ["0"].images.fixed_height_small_still
+
+// this function makes the call to the api on button click and gets the data-name attr for the call
 function addListener(array) {
   array.forEach(function(val,index,array) {
     val.addEventListener('click',function(e) {
-      var value = $(this).attr('data-name')
+      var value = $(this).attr('data-name');
       callApi(value,index);
     })
   })
+}
+
+// Adding click event to gifs to alter the image src attributes
+function addClickToGifs(){
+  $('.gif').on('click',function(e){
+    var state = $(this).attr('data-state');
+
+    if(state === 'still'){
+      $(this).attr('src',$(this).attr('data-animate')).attr('data-state','animate');
+    } else {
+      $(this).attr('src',$(this).attr('data-still')).attr('data-state', 'still');
+    }
+
+  });
 }
 
 // builds button from array of strings
