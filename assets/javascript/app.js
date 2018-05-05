@@ -7,19 +7,23 @@ var btnToAddAnimal = document.getElementById('add_animal_btn');
 
 function callApi(search,index) {
   $.ajax({
-    url: `http://api.giphy.com/v1/gifs/search?q=${search}&limit=5&api_key=Y7eIT0AhbEPOy1v9fu1UgUozsYu2DDBm`,
+    url: `http://api.giphy.com/v1/gifs/search?q=${search}&limit=6&api_key=Y7eIT0AhbEPOy1v9fu1UgUozsYu2DDBm`,
     method : "GET"
   }).then(function(res) {
     //gets an array of objects
     // In each item of the array get images.fixed_height_small_still
 
     var arrayOfGif = res.data;
-    arrayOfGif.forEach(function(val) {
+    arrayOfGif.forEach(function(val,index) {
       console.log(val)
+      if(index%2 === 0){
       //  prepend img html to id images fixed_height_small_still orig
-        var template = `<div><img src="${val.images.fixed_height_still.url}" /></div>`;
+        var template = `<div class="red"><img src="${val.images.fixed_height_still.url}" /></div>`;
         $("#images").prepend(template);
-
+      } else {
+        var template = `<div class="green"><img class="green" src="${val.images.fixed_height_still.url}" /></div>`;
+        $("#images").prepend(template);
+      }
     })
   });
 }
