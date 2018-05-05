@@ -8,6 +8,8 @@ body {
   margin-top: 1em;
 }
 
+
+
 .the_grid {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
@@ -54,8 +56,15 @@ body {
   color: #5CDB95 !important;
 }
 
+/*============================= */
+/* image grid starts here   */
+/*============================  */
+
 #images {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 5px;
+  max-width: 60vw;
+  margin-right: auto;
+  margin-left: auto;
 }

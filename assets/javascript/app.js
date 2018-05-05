@@ -5,13 +5,22 @@ var btnToAddAnimal = document.getElementById('add_animal_btn');
 // var url = "http://api.giphy.com/v1/gifs/search?q=dog&limit=5&api_key=Y7eIT0AhbEPOy1v9fu1UgUozsYu2DDBm";
 // i get an array of five pics  on click
 
-function callApi(search) {
+function callApi(search,index) {
   $.ajax({
     url: `http://api.giphy.com/v1/gifs/search?q=${search}&limit=5&api_key=Y7eIT0AhbEPOy1v9fu1UgUozsYu2DDBm`,
     method : "GET"
   }).then(function(res) {
-    console.log(res.data);
+    //gets an array of objects
+    // In each item of the array get images.fixed_height_small_still
 
+    var arrayOfGif = res.data;
+    arrayOfGif.forEach(function(val) {
+      console.log(val)
+      //  prepend img html to id images fixed_height_small_still orig
+        var template = `<div><img src="${val.images.fixed_height_still.url}" /></div>`;
+        $("#images").prepend(template);
+
+    })
   });
 }
 // ["0"].images.fixed_height_small_still
@@ -19,7 +28,7 @@ function addListener(array) {
   array.forEach(function(val,index,array) {
     val.addEventListener('click',function(e) {
       var value = $(this).attr('data-name')
-      callApi(value);
+      callApi(value,index);
     })
   })
 }
