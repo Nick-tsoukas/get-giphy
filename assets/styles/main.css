@@ -21,23 +21,31 @@ body {
 
 .the_grid {
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
+  /* grid-template-columns: repeat(20, 1fr); */
+  grid-auto-flow: row dense;
   grid-gap: 5px;
   min-width: 100vw;
+  margin-bottom: 4em;
 }
 
 .myButton {
   width: 100%;
-  height: 50px;
-  background: black;
+  height: 100px;
   justify-self: center;
   display: grid;
   justify-content: center;
   align-items: center;
   color: #5CDB95;
   transition: all 1s;
-  font-size: 1.5em;
-  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.4);
+  border:1px solid #5CDB95;
+}
+
+.redText {
+  color: red;
+}
+
+.greenText {
+  color:#5CDB95;
 }
 
 .myButton:hover {
@@ -81,22 +89,34 @@ body {
 }
 
 .red {
-  background: black;
+  display: grid;
+  justify-content: center;
+  height: 200px;
+  align-items: center;
+  border:1px solid #5CDB95;
+}
+
+.green {
   display: grid;
   justify-content: center;
   height: 300px;
   align-items: center;
-  border:10px solid #5CDB95;
-}
-
-.green {
-  background: #5CDB95;
-  display: grid;
-  justify-content: center;
-  height: 300px;
-  align-items: center
+  border:1px solid #5CDB95;
 }
 
 .mui-textfield>input, .mui-textfield>textarea {
-    border-bottom: 10px solid;
+    /* border-bottom: 10px solid; */
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: red;
+    opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: red;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: red;
 }

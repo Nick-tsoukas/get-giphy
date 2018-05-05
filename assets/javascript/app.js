@@ -1,26 +1,21 @@
-var array = ['little ghost nebula','orion nebula','vela pulsar','ganymede','triangulum galaxy','lagoon nebula','eagle nebula','helix nebula','omega nebula','saturn nebula'];
+var array = ['little ghost nebula', 'orion nebula', 'vela pulsar', 'ganymede', 'triangulum galaxy', 'lagoon nebula', 'eagle nebula', 'helix nebula', 'omega nebula', 'saturn nebula'];
 var btnToAddAnimal = document.getElementById('add_animal_btn');
 
 
-// var url = "http://api.giphy.com/v1/gifs/search?q=dog&limit=5&api_key=Y7eIT0AhbEPOy1v9fu1UgUozsYu2DDBm";
-
-
-
-function callApi(search,index) {
+function callApi(search, index) {
   $.ajax({
     url: `http://api.giphy.com/v1/gifs/search?q=${search}&limit=6&api_key=Y7eIT0AhbEPOy1v9fu1UgUozsYu2DDBm`,
-    method : "GET"
+    method: "GET"
   }).then(function(res) {
 
     //gets an array of objects
     // In each item of the array get images.fixed_height_small_still
 
     var arrayOfGif = res.data;
-    arrayOfGif.forEach(function(val,index) {
-      console.log(val)
-      if(index%2 === 0){
-      //  prepend img html to id images fixed_height_small_still orig
-        var template = `<div draggable="true" class="red"><img class="gif" src="${val.images.fixed_height_still.url}" data-state="still" data-still="${val.images.fixed_height_still.url}" data-animate="${val.images.fixed_height.url}" /></div>`;
+    arrayOfGif.forEach(function(val, index) {
+      if (index % 2 === 0) {
+        //  prepend img html to id images fixed_height_small_still orig
+        var template = `<div draggable="true" class="green"><img class="gif" src="${val.images.fixed_height_still.url}" data-state="still" data-still="${val.images.fixed_height_still.url}" data-animate="${val.images.fixed_height.url}" /></div>`;
         $("#images").prepend(template);
       } else {
         var template = `<div draggable="true" class="green"><img class="gif" src="${val.images.fixed_height_still.url}" data-state="still" data-still="${val.images.fixed_height_still.url}" data-animate="${val.images.fixed_height.url}" /></div>`;
@@ -29,37 +24,38 @@ function callApi(search,index) {
     });
     //Adding click event to images with the gif class
     addClickToGifs();
+
   });
 }
 
 // this function makes the call to the api on button click and gets the data-name attr for the call
 function addListener(array) {
-  array.forEach(function(val,index,array) {
-    val.addEventListener('click',function(e) {
+  array.forEach(function(val, index, array) {
+    val.addEventListener('click', function(e) {
       var value = $(this).attr('data-name');
-      callApi(value,index);
+      callApi(value, index);
     })
   })
 }
 
 // Adding click event to gifs to alter the image src attributes
-function addClickToGifs(){
-  $('.gif').on('click',function(e){
+function addClickToGifs() {
+  $('.gif').on('click', function(e) {
     var state = $(this).attr('data-state');
 
-    if(state === 'still'){
-      $(this).attr('src',$(this).attr('data-animate')).attr('data-state','animate');
+    if (state === 'still') {
+      $(this).attr('src', $(this).attr('data-animate')).attr('data-state', 'animate');
     } else {
-      $(this).attr('src',$(this).attr('data-still')).attr('data-state', 'still');
+      $(this).attr('src', $(this).attr('data-still')).attr('data-state', 'still');
     }
 
   });
 }
 
 // builds button from array of strings
-function buildBtn(array){
+function buildBtn(array) {
   var template = ``;
-  array.forEach(function(val,index,array) {
+  array.forEach(function(val, index, array) {
     template += `<div class="myButton" data-name="${val}">${val}</div>
     `;
   });
@@ -67,10 +63,18 @@ function buildBtn(array){
   // gets button array
   var buttonsArray = Array.from(document.getElementsByClassName('myButton'));
   // console.logs button array : html collection
-  addListener(buttonsArray)
+  addListener(buttonsArray);
 };
 
 buildBtn(array);
+
+function changeClass() {
+  setTimeout(function() {
+    $('.myButton').addClass('red');
+  },2000);
+}
+changeClass();
+
 
 //button to add animal eventListen
 btnToAddAnimal.addEventListener('click', function(e) {
@@ -80,5 +84,6 @@ btnToAddAnimal.addEventListener('click', function(e) {
   callApi(value)
   $('#grid').empty();
   $("#animal-input-val").val(" ");
-  return buildBtn(array);
+  buildBtn(array);
+  changeClass();
 })
