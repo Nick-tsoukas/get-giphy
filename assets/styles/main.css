@@ -43,7 +43,8 @@ a {
   display: grid;
   justify-content: center;
   align-items: center;
-  color: #5CDB95;
+  /* color: #5CDB95; */
+  color: black;
   transition: all 1s;
   border: 1px solid #5CDB95;
 }
@@ -65,7 +66,7 @@ a {
 .myButton:hover {
   transform: scale(1.5);
   border: 5px solid #5CDB95;
-  font-size: 4em;
+  font-size: 5em;
 }
 
 .container_form {
