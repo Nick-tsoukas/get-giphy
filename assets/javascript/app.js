@@ -13,7 +13,10 @@ function callApi(search, index) {
     //1: Get array of objects from data 2. Iterates and builds template. 3. Prepends to DOM
     var arrayOfGif = res.data;
     arrayOfGif.forEach(function(val, index) {
-      var template = `<div class="green"><img class="gif" src="${val.images.fixed_height_still.url}" data-state="still" data-still="${val.images.fixed_height_still.url}" data-animate="${val.images.fixed_height.url}" /></div>`;
+      var template = `<div class="green">
+                      <img id="gif${index}" class="gif" src="${val.images.fixed_height_still.url}" data-state="still" data-still="${val.images.fixed_height_still.url}" data-animate="${val.images.fixed_height.url}" />
+                      <a target="_blank" class="download" href="#" onclick="this.href = $('#gif${index}').attr('src');"download><i class="material-icons">cloud_download</i</a>
+                    </div>`;
       $("#images").prepend(template);
     });
     addClickToGifs();
@@ -86,5 +89,5 @@ nebulaBtn.addEventListener('click', function(e) {
 var x = document.getElementById("myAudio");
 
 function playAudio() {
-    x.play();
+  x.play();
 }

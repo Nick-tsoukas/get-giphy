@@ -130,6 +130,11 @@ a {
   margin-right: auto;
 }
 
+.download {
+  text-align: center;
+  color: #5CDB95;
+}
+
 @media screen and (max-width: 600px) {
   body {
     margin-right: auto;
