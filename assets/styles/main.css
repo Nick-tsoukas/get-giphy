@@ -43,8 +43,7 @@ a {
   display: grid;
   justify-content: center;
   align-items: center;
-  /* color: #5CDB95; */
-  color: black;
+  color: #5CDB95;
   transition: all 1s;
   border: 1px solid #5CDB95;
 }
