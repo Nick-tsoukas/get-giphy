@@ -111,7 +111,7 @@ a {
   justify-content: center;
   height: 200px;
   align-items: center;
-  border: 1px solid #5CDB95;
+  /* border: 1px solid #5CDB95; */
 }
 
 .green {
@@ -119,7 +119,7 @@ a {
   justify-content: center;
   height: 300px;
   align-items: center;
-  border: 1px solid #5CDB95;
+  /* border: 1px solid #5CDB95; */
 }
 
 .mui-textfield {
