@@ -15,6 +15,10 @@ body {
   background-image: url("/assets/images/backGrid.jpg");
 }
 
+a {
+  text-decoration: none !important;
+}
+
 
 /*=======================================  */
 /* the grid for the buttons  */

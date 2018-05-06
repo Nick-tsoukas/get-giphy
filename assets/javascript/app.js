@@ -57,7 +57,7 @@ function addClickToGifs() {
 function buildBtn(array) {
   var template = ``;
   array.forEach(function(val, index, array) {
-    template += `<div class="myButton" data-name="${val}">${val.toUpperCase()}</div>
+    template += `<a href="#fly"><div class="myButton" data-name="${val}">${val.toUpperCase()}</div></a>
     `;
   });
   $('#grid').append(template);
