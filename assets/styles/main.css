@@ -16,7 +16,7 @@ body {
   margin-left: 1em;
   margin-right: 1em;
   margin-top: 1em;
-  background-image: url("/backGrid.jpg");
+  background-image: url("../../backGrid.jpg");
 }
 
 a {
