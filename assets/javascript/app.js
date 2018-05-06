@@ -15,8 +15,8 @@ function callApi(search, index) {
     $("#images").empty();
     arrayOfGif.forEach(function(val, index) {
       var template = `<div class="green">
-                        <img id="gif${index}" class="gif" src="${val.images.fixed_height_still.url}" data-state="still" data-still="${val.images.fixed_height_still.url}" data-animate="${val.images.fixed_height.url}" />
-                        <a target="_blank" class="download" href="#" onclick="this.href = $('#gif${index}').attr('src');"download><i class="material-icons">cloud_download</i</a>
+                        <img id="gif${index}" class="gif" src="${val.images.fixed_height_still.url}" data-state="still" data-still="${val.images.fixed_height_still.url}" data-animate="${val.images.fixed_height.url}" download />
+                        <a class="download" href="${val.images.fixed_height_still.url}" download ><i class="material-icons">cloud_download</i</a>
                      </div>`;
       $("#images").prepend(template);
     });
