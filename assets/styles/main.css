@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Iceland');
+
 * {
   box-sizing: border-box;
+  font-family: 'Iceland', cursive;
+
 }
 
 body, html {
@@ -19,8 +23,8 @@ a {
   text-decoration: none !important;
 }
 
-
 /*=======================================  */
+
 /* the grid for the buttons  */
 
 .the_grid {
@@ -41,7 +45,7 @@ a {
   align-items: center;
   color: #5CDB95;
   transition: all 1s;
-  border:1px solid #5CDB95;
+  border: 1px solid #5CDB95;
 }
 
 .redText {
@@ -49,15 +53,18 @@ a {
 }
 
 .greenText {
-  color:#5CDB95;
+  color: #5CDB95;
 }
 
 /* ============================== */
+
 /* CSS TRANSFORM */
+
 /*================================  */
+
 .myButton:hover {
   transform: scale(1.5);
-  border:10px solid #5CDB95;
+  border: 5px solid #5CDB95;
   font-size: 4em;
 }
 
@@ -84,7 +91,9 @@ a {
 }
 
 /*============================= */
+
 /* image grid starts here   */
+
 /*============================  */
 
 #images {
@@ -102,7 +111,7 @@ a {
   justify-content: center;
   height: 200px;
   align-items: center;
-  border:1px solid #5CDB95;
+  border: 1px solid #5CDB95;
 }
 
 .green {
@@ -110,34 +119,41 @@ a {
   justify-content: center;
   height: 300px;
   align-items: center;
-  border:1px solid #5CDB95;
+  border: 1px solid #5CDB95;
 }
-
-.mui-textfield>input, .mui-textfield>textarea {
-    /* border-bottom: 10px solid; */
-}
-
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: red;
-    opacity: 1; /* Firefox */
-}
-
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: red;
-}
-
-::-ms-input-placeholder { /* Microsoft Edge */
-    color: red;
-}
-
-/* .mui-textfield {
-  border: 1px solid white !important;
-} */
 
 .mui-textfield {
-    border: 1px solid white !important;
-    max-width: 50%;
-    margin-left: auto;
-    margin: right;
+  border: 1px solid white !important;
+  max-width: 50%;
+  margin-left: auto;
+  margin: right;
+  margin-right: auto;
+}
+
+@media screen and (max-width: 600px) {
+  body {
     margin-right: auto;
+    margin-left: auto;
+  }
+  #images {
+    grid-template-columns: 1fr;
+  }
+  .the_grid {
+    grid-template-columns: 1fr;
+  }
+  .myButton:hover {
+    transform: scale(1);
+    border: 4px solid #5CDB95;
+    font-size: 1.2em;
+  }
+}
+
+/* img {
+  -webkit-filter: saturate(8);
+  filter: saturate(20);
+} */
+
+img {
+  -webkit-filter: drop-shadow(16px 16px 10px rgba(0, 0, 0, 0.9));
+  filter: drop-shadow(16px 16px 10px rgba(0, 0, 0, 0.9));
 }

@@ -1,7 +1,8 @@
 var array = ['orion nebula', 'vela pulsar', 'ganymede', 'triangulum galaxy', 'lagoon nebula', 'eagle nebula', 'helix nebula', 'omega nebula'];
-var btnToAddAnimal = document.getElementById('add_animal_btn');
+var nebulaBtn = document.getElementById('add_animal_btn');
 
 
+//function to make call to the giphy api : params = search,index
 function callApi(search, index) {
   $.ajax({
     url: `https://cors-anywhere.herokuapp.com/http://api.giphy.com/v1/gifs/search?q=${search}&limit=6&api_key=Y7eIT0AhbEPOy1v9fu1UgUozsYu2DDBm`,
@@ -9,23 +10,13 @@ function callApi(search, index) {
   }).then(function(res) {
     console.log(res);
 
-    //gets an array of objects
-    // In each item of the array get images.fixed_height_small_still
-
+    //1: Get array of objects from data 2. Iterates and builds template. 3. Prepends to DOM
     var arrayOfGif = res.data;
     arrayOfGif.forEach(function(val, index) {
-      if (index % 2 === 0) {
-        //  prepend img html to id images fixed_height_small_still orig
-        var template = `<div class="green"><img class="gif" src="${val.images.fixed_height_still.url}" data-state="still" data-still="${val.images.fixed_height_still.url}" data-animate="${val.images.fixed_height.url}" /></div>`;
-        $("#images").prepend(template);
-      } else {
-        var template = `<div class="green"><img class="gif" src="${val.images.fixed_height_still.url}" data-state="still" data-still="${val.images.fixed_height_still.url}" data-animate="${val.images.fixed_height.url}" /></div>`;
-        $("#images").prepend(template);
-      }
+      var template = `<div class="green"><img class="gif" src="${val.images.fixed_height_still.url}" data-state="still" data-still="${val.images.fixed_height_still.url}" data-animate="${val.images.fixed_height.url}" /></div>`;
+      $("#images").prepend(template);
     });
-    //Adding click event to images with the gif class
     addClickToGifs();
-
   });
 }
 
@@ -35,6 +26,8 @@ function addListener(array) {
     val.addEventListener('click', function(e) {
       var value = $(this).attr('data-name');
       callApi(value, index);
+      //Launch Rocket Ship!!!
+      playAudio();
     })
   })
 }
@@ -46,8 +39,10 @@ function addClickToGifs() {
 
     if (state === 'still') {
       $(this).attr('src', $(this).attr('data-animate')).attr('data-state', 'animate');
+      console.log(this)
     } else {
       $(this).attr('src', $(this).attr('data-still')).attr('data-state', 'still');
+      console.log(this)
     }
 
   });
@@ -57,7 +52,7 @@ function addClickToGifs() {
 function buildBtn(array) {
   var template = ``;
   array.forEach(function(val, index, array) {
-    template += `<a href="#fly"><div class="myButton" data-name="${val}">${val.toUpperCase()}</div></a>
+    template += `<a href="#rocket"><div class="myButton" data-name="${val}">${val.toUpperCase()}</div></a>
     `;
   });
   $('#grid').append(template);
@@ -72,13 +67,13 @@ buildBtn(array);
 function changeClass() {
   setTimeout(function() {
     $('.myButton').addClass('red');
-  },2000);
+  }, 2000);
 }
 changeClass();
 
 
-//button to add animal eventListen
-btnToAddAnimal.addEventListener('click', function(e) {
+//button to add animal eventListen clears all content from div
+nebulaBtn.addEventListener('click', function(e) {
   e.preventDefault();
   var value = $('#animal-input-val').val();
   array.push(value);
@@ -88,3 +83,8 @@ btnToAddAnimal.addEventListener('click', function(e) {
   buildBtn(array);
   changeClass();
 })
+var x = document.getElementById("myAudio");
+
+function playAudio() {
+    x.play();
+}
