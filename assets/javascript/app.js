@@ -1,4 +1,4 @@
-var array = ['little ghost nebula', 'orion nebula', 'vela pulsar', 'ganymede', 'triangulum galaxy', 'lagoon nebula', 'eagle nebula', 'helix nebula', 'omega nebula', 'saturn nebula'];
+var array = ['orion nebula', 'vela pulsar', 'ganymede', 'triangulum galaxy', 'lagoon nebula', 'eagle nebula', 'helix nebula', 'omega nebula'];
 var btnToAddAnimal = document.getElementById('add_animal_btn');
 
 
@@ -7,6 +7,7 @@ function callApi(search, index) {
     url: `http://api.giphy.com/v1/gifs/search?q=${search}&limit=6&api_key=Y7eIT0AhbEPOy1v9fu1UgUozsYu2DDBm`,
     method: "GET"
   }).then(function(res) {
+    console.log(res);
 
     //gets an array of objects
     // In each item of the array get images.fixed_height_small_still
@@ -15,10 +16,10 @@ function callApi(search, index) {
     arrayOfGif.forEach(function(val, index) {
       if (index % 2 === 0) {
         //  prepend img html to id images fixed_height_small_still orig
-        var template = `<div draggable="true" class="green"><img class="gif" src="${val.images.fixed_height_still.url}" data-state="still" data-still="${val.images.fixed_height_still.url}" data-animate="${val.images.fixed_height.url}" /></div>`;
+        var template = `<div class="green"><img class="gif" src="${val.images.fixed_height_still.url}" data-state="still" data-still="${val.images.fixed_height_still.url}" data-animate="${val.images.fixed_height.url}" /></div>`;
         $("#images").prepend(template);
       } else {
-        var template = `<div draggable="true" class="green"><img class="gif" src="${val.images.fixed_height_still.url}" data-state="still" data-still="${val.images.fixed_height_still.url}" data-animate="${val.images.fixed_height.url}" /></div>`;
+        var template = `<div class="green"><img class="gif" src="${val.images.fixed_height_still.url}" data-state="still" data-still="${val.images.fixed_height_still.url}" data-animate="${val.images.fixed_height.url}" /></div>`;
         $("#images").prepend(template);
       }
     });
@@ -56,7 +57,7 @@ function addClickToGifs() {
 function buildBtn(array) {
   var template = ``;
   array.forEach(function(val, index, array) {
-    template += `<div class="myButton" data-name="${val}">${val}</div>
+    template += `<div class="myButton" data-name="${val}">${val.toUpperCase()}</div>
     `;
   });
   $('#grid').append(template);
