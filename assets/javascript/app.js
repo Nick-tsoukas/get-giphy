@@ -4,7 +4,7 @@ var btnToAddAnimal = document.getElementById('add_animal_btn');
 
 function callApi(search, index) {
   $.ajax({
-    url: `http://api.giphy.com/v1/gifs/search?q=${search}&limit=6&api_key=Y7eIT0AhbEPOy1v9fu1UgUozsYu2DDBm`,
+    url: `https://cors-anywhere.herokuapp.com/http://api.giphy.com/v1/gifs/search?q=${search}&limit=6&api_key=Y7eIT0AhbEPOy1v9fu1UgUozsYu2DDBm`,
     method: "GET"
   }).then(function(res) {
     console.log(res);
