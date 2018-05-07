@@ -1,4 +1,4 @@
-var array = ['orion nebula', 'vela pulsar', 'ganymede', 'triangulum galaxy', 'lagoon nebula', 'eagle nebula', 'helix nebula', 'omega nebula'];
+var array = ['orion nebula', 'vela pulsar', 'ganymede', 'triangulum galaxy', 'lagoon nebula', 'eagle nebula', 'helix nebula', 'omega nebula',"cat's eye nebula"];
 var nebulaBtn = document.getElementById('add_animal_btn');
 
 
