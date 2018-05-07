@@ -65,7 +65,7 @@ function buildBtn(array) {
   // console.logs button array : html collection
   addListener(buttonsArray);
 };
-
+MicroModal.show('modal-1');
 buildBtn(array);
 
 function changeClass() {
@@ -74,7 +74,6 @@ function changeClass() {
   }, 2000);
 }
 changeClass();
-
 
 //button to add animal eventListen clears all content from div
 nebulaBtn.addEventListener('click', function(e) {
@@ -87,8 +86,8 @@ nebulaBtn.addEventListener('click', function(e) {
   buildBtn(array);
   changeClass();
 })
-var x = document.getElementById("myAudio");
+var launchSound = document.getElementById("myAudio");
 
 function playAudio() {
-  x.play();
+  launchSound.play();
 }

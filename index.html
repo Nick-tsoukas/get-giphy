@@ -9,19 +9,21 @@
   <link href="//cdn.muicss.com/mui-0.9.39/css/mui.min.css" rel="stylesheet" type="text/css" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="assets/styles/main.css">
+
   <style>
-  body {
-    margin-left: 1em;
-    margin-right: 1em;
-    margin-top: 1em;
-    /* background-image: url("14com-compressor.jpg"); */
-    background-image: url("backGrid.jpg");
-    background-size: cover;
-  }
+    body {
+      margin-left: 1em;
+      margin-right: 1em;
+      margin-top: 1em;
+      background-image: url("backGrid.jpg");
+      background-size: cover;
+    }
   </style>
+
 </head>
 
 <body>
+
   <div id="grid" class="the_grid"></div>
   <div id="fly" class="container_form">
     <form class="mui-form">
@@ -34,18 +36,46 @@
 
   <!-- image grid -->
   <section id="images"></section>
-  <audio id="myAudio">
-    <source src="assets/sounds/space.mp3" type="audio/mpeg">
-    <source src="horse.mp3" type="audio/mpeg">
+
+  <audio loop id="myAudio">
+    <source src="assets/sounds/titanSurface.mp3" type="audio/mpeg">
+    <source src="" type="audio/mpeg">
   </audio>
 
   <!-- just an empty div to bring user to the bottom of the page on click  -->
   <div id="rocket"></div>
 
-
+  <!--==============================================-->
+  <!-- MODAL BOX -->
+  <div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
+    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+      <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+        <header class="modal__header">
+          <h2 class="modal__title" id="modal-1-title">
+          CAUTION!
+        </h2>
+          <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+        </header>
+        <main class="modal__content" id="modal-1-content">
+          <p>
+            The sounds you are about to hear are ghostly. Do not be alarmed.
+            The Js rocket converted radar echoes during the last few kilometers of
+            its descent onto Saturn's moon Titan. Scientists will use the recording
+            to map the surface of Titan and much more.
+            <br>
+            Comment: Kind of like a Bat!
+          </p>
+        </main>
+        <footer class="modal__footer">
+          <!-- <button class="modal__btn modal__btn-primary">Continue</button> -->
+          <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Close</button>
+        </footer>
+      </div>
+    </div>
+  </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <sript src="https://unpkg.com/micromodal/dist/micromodal.min.js">
+  <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
   <script src="//cdn.muicss.com/mui-0.9.39/js/mui.min.js"></script>
   <script src="assets/javascript/app.js" charset="utf-8"></script>
 </body>
