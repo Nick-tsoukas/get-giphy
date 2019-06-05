@@ -24,6 +24,20 @@ function callApi(search, index) {
   });
 }
 
+  $.ajax({
+    url: `https://cors-anywhere.herokuapp.com/https://eonet.sci.gsfc.nasa.gov/api/v2.1/events?api_key="DEMO_KEY"`,
+    method: "GET"
+  }).then(function(res) {
+   const events = res.events.slice(0,100);
+   events.forEach((event) => {
+     console.log('===========');
+     console.log(event.title);
+     console.log('=============');
+     console.log(event.geometries);
+   })
+  });
+
+
 // this function makes the call to the api on button click and gets the data-name attr for the call
 function addListener(array) {
   array.forEach(function(val, index, array) {
